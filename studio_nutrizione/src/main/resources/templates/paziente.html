@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+	
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/paziente.css}"/>
+		<title>Area Paziente: Nutrition Medical Center</title>
+	</head>
+	
+	<body>
+		
+		<header class="site-header">
+			<nav class="navbar-container">
+				<div class="nav-left"></div>
+						
+				<div class="nav-center">
+					<div class="logo-container">
+						<a th:href="@{/}">
+						    <img th:src="@{/images/logo.png}" alt="Logo Sito Nutrizionale" id="main-logo">
+						   </a>
+					</div>
+					<div class="nav-links">
+						<a th:href="@{/index}">Home</a>
+						<a th:href="@{/paziente/profilo}">Profilo</a>
+						<a th:href="@{/paziente/prenotazioni}">Prenota visita</a>
+						<a th:href="@{/contatti}">Contatti</a>
+					</div>
+				</div>
+						
+				<div class="nav-right">
+					<div class="user-actions">
+						<form th:action="@{/logout}" method="POST" style="display: inline;">
+							<button type="submit" class="btn-custom btn-logout">Logout</button>
+						</form>
+					</div>
+				</div>
+			</nav>
+		</header>
+		
+		<main>
+			<section class="home-paziente-text">
+				
+				<div class="alert alert-primary" role="alert" th:text="${success}" th:if="${success}"></div>
+				
+				<div th:if="${paziente}">
+    				<h1>Benvenuto nell'Area Paziente, <span th:text="${paziente.name}"></span> <span th:text="${paziente.surname}"></span></h1>
+				</div>
+    			<div th:if="${userDetails}">
+        			<p>Sei loggato con username: <strong><span th:text="${userDetails.username}"></span></strong> <br> Qui sotto troverai tutte le 
+					   informazioni e le operazioni disponibili per te:</p>
+    			</div>
+
+				<h2>Le tue Prenotazioni:</h2>
+				<div th:if="${prenotazioniPaziente == null or #lists.isEmpty(prenotazioniPaziente)}">
+					<p>In questo momento non hai nessuna prenotazione registrata.</p>
+				</div>
+				
+				<ul class="info-list" th:unless="${prenotazioniPaziente == null or #lists.isEmpty(prenotazioniPaziente)}">
+    				<li class="prenotazione-item" th:each="prenotazione : ${prenotazioniPaziente}">
+						
+						<div class="info-item">
+							<strong>Data:</strong> 
+							<span th:text="${#temporals.format(prenotazione.dateTime, 'dd/MM/yyyy HH:mm')}"></span>
+						</div>
+						
+						<div class="info-item" th:if="${prenotazione.paziente != null}">
+							<strong>Dottore:</strong>
+							<span th:text="${prenotazione.dottore.name + ' ' + prenotazione.dottore.surname}"></span>
+						</div>
+						
+						<div class="info-item info-actions">
+						</div>	
+					</li>
+ 				</ul>
+				
+	
+				<h2>Le tue Visite effettuate:</h2>
+				<div th:if="${visitePaziente == null or #lists.isEmpty(visitePaziente)}">
+					<p>In questo momento non hai effettuato alcuna visita.</p>
+				</div>
+				
+				<ul class="info-list" th:unless="${visitePaziente == null or #lists.isEmpty(visitePaziente)}">
+					
+					<li th:each="visita : ${visitePaziente}">
+						
+						<div class="visita-content">
+							<div class="visita-col-left">
+								<p><strong>Data:</strong> <span th:text="${#temporals.format(visita.dateTime, 'dd/MM/yyyy HH:mm')}"></span>
+								<p th:if="${visita.dottore != null}"><strong>Dottore:</strong> <span th:text="${visita.dottore.name + ' ' + visita.dottore.surname}"></span></p>
+							</div>
+							
+							<div class="visita-col-right">
+								<p><strong>Tipologia:</strong> <span th:text="${visita.type}"></span></p>
+								<p><strong>Descrizione:</strong> <span th:text="${visita.description}"></span></p>
+							</div>   	
+						</div>
+						
+					</li>
+				</ul>
+	
+				<h2>Storico dei Piani Alimentari:</h2>
+				<div th:if="${pianiPaziente == null or #lists.isEmpty(pianiPaziente)}">
+					<p>In questo momento non hai nessun piano alimentare assegnato.</p>
+				</div>
+				
+				<div class="piani-container" th:unless="${pianiPaziente == null or #lists.isEmpty(pianiPaziente)}">
+					
+					<div class="piano-elem" th:each="piano : ${pianiPaziente}">
+						
+						<div class="elem-content">
+							<h4 class="elem-title" th:if="${piano.dottore != null}">
+								<span th:text="${piano.dottore.name + ' ' + piano.dottore.surname}"></span></br>
+			    			</h4>
+							
+							<div class="elem-info">
+								<p><strong>Data inizio: </strong><span th:text="${#temporals.format(piano.startDate, 'dd/MM/yyyy')}"></span></p>
+								<p th:if="${piano.endDate != null}"><strong>Data fine:</strong> <span th:text="${#temporals.format(piano.endDate, 'dd/MM/yyyy')}"></span></p>
+								<p th:if="${piano.endDate == null}"><strong>Data fine:</strong> -</p>
+							</div>
+							
+							<div class="elem-actions">
+								<a class="btn-action btn-visualizza" th:href="@{'/paziente/visualizza-piano' + '/' + ${piano.id}}">Visualizza</a>
+							</div>
+						</div>
+						
+					</div>
+					
+				</div>
+			</section>
+		</main>
+		
+		
+		<footer>
+			<div class="bottom-nav-links">
+				<a th:href="@{/}">Home</a>
+				<span>|</span>
+				<a th:href="@{/contatti}">Contatti</a>
+			</div>
+			<p>© Copyright 2025. Tutti i diritti riservati.</p>
+		</footer>	
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+	
+	</body>
+	
+</html>
+
+    

@@ -1,0 +1,347 @@
+/* dottore.css */
+
+html {
+	height: 100%;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    background-color: #f0f0f0;
+    line-height: 1.6;
+    margin: 0;
+	overflow-y: auto;
+	display:flex;
+	flex-direction: column;
+	min-height:100vh;
+}
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start; 
+	align-items: center;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+
+h2 {
+	text-align: left;
+	margin-top: 50px;
+	margin-bottom:20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #4c753e;
+}
+
+p {
+	font-size: 1.2rem;
+}
+
+.site-header {
+    background-color: #4c753e; 
+    padding: 20px 0; 
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-left, .nav-right {
+    flex: 1;
+}
+
+.nav-center {
+    flex: 2; 
+}
+
+.nav-center {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+#main-logo {
+    height: auto; 
+    width: auto;  
+    max-height: 250px; 
+    margin-bottom: 15px; 
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; 
+    transition: border-bottom-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    border-bottom-color: white;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px; 
+}
+
+
+
+/* CSS BUTTONS */
+
+.btn-custom {
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-logout {
+    background-color: white;
+    color: #4c753e;
+}
+
+.btn-logout:hover {
+    background-color: transparent;
+    color: white;
+}
+
+.btn-action {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.btn-visualizza {
+    background-color: #4c753e;
+    color: white;
+    border-color: #4c753e;
+}
+
+.btn-visualizza:hover {
+    background-color: #3a592e;
+    border-color: #3a592e;
+    color: white;
+}
+
+.btn-cancella {
+    background-color: transparent;
+    color: #d9534f; 
+    border-color: #d9534f;
+}
+
+.btn-cancella:hover {
+    background-color: #d9534f;
+    color: white;
+}
+
+/* per modificare il colore di selezione testo o foto */
+::selection {
+    background-color: #6eab59;
+    color: white;
+}
+
+#main-logo {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* CSS HOME-DOTTORE-TEXT */
+
+.home-dottore-text {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background-color: white;
+	width: 1200px;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* CSS LISTA PRENOTAZIONI */
+
+.info-list {
+    list-style-type: none; 
+    padding: 0;            
+    margin-bottom: 50px;   
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 15px;         
+}
+
+.info-list li {
+	display: flex;
+	align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 20px;
+	margin: 0;
+}
+
+.info-list li.prenotazione-item {
+    justify-content: space-between;
+}
+
+.info-item {
+	display:flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.info-actions {
+	display: flex;
+	gap: 15px;
+}
+
+.info-list li.prenotazione-item a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #4c753e;
+    font-weight: bold;
+}
+
+.info-list li.prenotazione-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* CSS FLEXBOX PIANI ALIMENTARI */
+
+.piani-container {
+    display: flex;         
+    flex-wrap: wrap;       
+    justify-content: flex-start; 
+    gap: 10px;
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.piano-elem {
+    flex: 0 1 282px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.elem-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.elem-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    text-align: left;
+}
+
+.elem-info {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.elem-info p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.elem-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px; 
+    justify-content: flex-end; 
+}
+
+
+/* CSS LISTA VISITE */
+
+.visita-content {
+    display: flex;
+    gap: 30px; 
+	width: 100%;
+}
+
+.visita-col-left {
+    flex-shrink: 0; 
+    width: 280px; 
+}
+
+.visita-col-right {
+    flex-grow: 1;
+}
+
+.visita-content p {
+    margin: 0 0 10px 0; 
+    font-size: 1rem;
+    line-height: 1.5;
+}
+.visita-content p:last-child {
+    margin-bottom: 0;
+}
+
+.visita-content p strong {
+    display: block; 
+    margin-bottom: 3px;
+}
+
+
+
+/* CSS FOOTER */
+
+footer {
+	background-color: #4c753e; 
+	padding: 2vh;
+	text-align: center;
+}
+
+footer span {
+	color: white;
+}
+
+footer p {
+	color: white;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+.bottom-nav-links a {
+	color: white;
+	text-align: center;
+}

@@ -1,0 +1,186 @@
+/* profilo.css */
+
+html {
+	height: 100%;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+    background-color: #f0f0f0;
+    line-height: 1.6;
+    margin: 0;
+	overflow-y: auto;
+	display:flex;
+	flex-direction: column;
+	min-height:100vh;
+}
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start; 
+	align-items: center;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+}
+
+h2 {
+	text-align: left;
+	margin-top: 50px;
+	margin-bottom:20px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #4c753e;
+}
+
+ul {     
+	list-style-type: none; 
+	margin-bottom: 125px;
+}
+
+p {
+	font-size: 1.2rem;
+}
+
+.paziente-dati p {
+	text-align: left;
+}
+
+.site-header {
+    background-color: #4c753e; 
+    padding: 20px 0; 
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-left, .nav-right {
+    flex: 1;
+}
+
+.nav-center {
+    flex: 2; 
+}
+
+.nav-center {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+}
+
+#main-logo {
+    height: auto; 
+    width: auto;  
+    max-height: 250px; 
+    margin-bottom: 15px; 
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: normal;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent; 
+    transition: border-bottom-color 0.3s ease;
+}
+
+.nav-links a:hover {
+    border-bottom-color: white;
+}
+
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px; 
+}
+
+
+
+/* CSS BUTTONS */
+
+.btn-custom {
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-logout {
+    background-color: white;
+    color: #4c753e;
+}
+
+.btn-logout:hover {
+    background-color: transparent;
+    color: white;
+}
+
+
+/* per modificare il colore di selezione testo o foto */
+::selection {
+    background-color: #6eab59;
+    color: white;
+}
+
+#main-logo {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+/* CSS .paziente-profilo */
+
+.paziente-profilo {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background-color: white;
+	width: 1200px;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* CSS FOOTER */
+
+footer {
+	background-color: #4c753e; 
+	padding: 2vh;
+	text-align: center;
+}
+
+footer span {
+	color: white;
+}
+
+footer p {
+	color: white;
+	font-size: 1rem;
+	font-weight: normal;
+}
+
+.bottom-nav-links a {
+	color: white;
+	text-align: center;
+}
